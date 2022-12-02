@@ -25,10 +25,10 @@ Notes on the benchmarks:
 ### Y2022.D01
 |          Method |        Mean |     Error |    StdDev | Allocated |
 |---------------- |------------:|----------:|----------:|----------:|
-|  AnswerOne_Test |    243.4 ns |   4.02 ns |   3.76 ns |         - |
-| AnswerOne_Input | 38,274.9 ns | 257.42 ns | 228.20 ns |         - |
-|  AnswerTwo_Test |    248.2 ns |   1.11 ns |   1.04 ns |         - |
-| AnswerTwo_Input | 39,512.1 ns | 187.76 ns | 175.63 ns |         - |
+|  AnswerOne_Test |    240.3 ns |   4.06 ns |   4.83 ns |         - |
+| AnswerOne_Input | 38,389.9 ns | 101.15 ns |  94.62 ns |         - |
+|  AnswerTwo_Test |    242.7 ns |   2.32 ns |   2.06 ns |         - |
+| AnswerTwo_Input | 39,586.3 ns | 183.11 ns | 142.96 ns |         - |
 
 ### Y2022.D02
 |          Method |         Mean |      Error |     StdDev | Allocated |

@@ -11,6 +11,16 @@ public partial class Answer : IAnswer<Answer>
         var maxValue = 0;
         var current = 0;
 
+        void Flush()
+        {
+            if (current > maxValue)
+            {
+                maxValue = current;
+            }
+
+            current = 0;
+        }
+
         foreach(var line in reader.EnumerateLines())
         {
             if (line.Length > 0)
@@ -19,13 +29,10 @@ public partial class Answer : IAnswer<Answer>
                 continue;
             }
 
-            if (current > maxValue)
-            {
-                maxValue = current;
-            }
-
-            current = 0;
+            Flush();
         }
+
+        Flush();
 
         return maxValue;
     }

@@ -1,0 +1,25 @@
+<Project>
+
+    <!-- This file is imported by every answer -->
+
+    <Import Project="..\..\Directory.Build.props" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Data\*.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Condition with exists because BenchmarkDotNet makes a temporary solution and cannot find the project -->
+        <ProjectReference Include="..\..\Core\Core.csproj" Condition="Exists('..\..\Core\Core.csproj')" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Hacky workaround for BenchmarkDotNet, otherwise the answer cannot be found -->
+        <ProjectReference Include="..\..\..\..\Y20*.csproj" />
+    </ItemGroup>
+
+</Project>

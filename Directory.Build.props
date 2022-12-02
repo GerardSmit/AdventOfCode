@@ -1,0 +1,15 @@
+<Project>
+
+    <!-- This file is imported by every project in the solution -->
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Using Include="Core" />
+    </ItemGroup>
+
+</Project>

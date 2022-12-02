@@ -1,17 +1,17 @@
 ﻿namespace Y2021.D02;
 
-public class Answer : IAnswer<Answer>
+public partial class Answer : IAnswer<Answer>
 {
     public static int TestAnswerOne => 150;
 
     public static int TestAnswerTwo => 900;
 
-    public static int SolveAnswerOne(ref SpanReader lines)
+    public static int SolveAnswerOne(ReadOnlySpan<char> lines)
     {
         var horizontal = 0;
         var depth = 0;
 
-        foreach (var line in lines)
+        foreach (var line in lines.EnumerateLines())
         {
             if (!line.TrySplit(' ', out var direction, out var valueStr) ||
                 !int.TryParse(valueStr, out var value))
@@ -36,13 +36,13 @@ public class Answer : IAnswer<Answer>
         return horizontal * depth;
     }
 
-    public static int SolveAnswerTwo(ref SpanReader lines)
+    public static int SolveAnswerTwo(ReadOnlySpan<char> lines)
     {
         var horizontal = 0;
         var depth = 0;
         var aim = 0;
 
-        foreach (var line in lines)
+        foreach (var line in lines.EnumerateLines())
         {
             if (!line.TrySplit(' ', out var direction, out var valueStr) ||
                 !int.TryParse(valueStr, out var value))

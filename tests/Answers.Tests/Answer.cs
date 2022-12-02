@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Core;
+using Xunit;
 
 namespace AdventOfCode;
 

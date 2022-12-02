@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Core;
 
@@ -29,33 +30,15 @@ public interface IAnswer<out T>
 
     static virtual Assembly GetAssembly() => typeof(T).Assembly;
 
-    static virtual Stream GetResourceStream(FileSource source)
-    {
-        var assembly = T.GetAssembly();
-        var assemblyName = assembly.GetName().Name;
-        var fileName = source switch
-        {
-            FileSource.Input => "input",
-            FileSource.Test => "test",
-            _ => throw new ArgumentOutOfRangeException(nameof(source), source, null)
-        };
+    static abstract string TestData { get; }
 
-        var resourceName = $"{assemblyName}.Data.{fileName}.txt";
-        var stream = assembly.GetManifestResourceStream(resourceName);
-
-        if (stream == null)
-        {
-            throw new FileNotFoundException($"Resource {resourceName} not found");
-        }
-
-        return stream;
-    }
+    static abstract string InputData { get; }
 
     static abstract int TestAnswerOne { get; }
 
     static abstract int TestAnswerTwo { get; }
 
-    static abstract int SolveAnswerOne(ref SpanReader reader);
+    static abstract int SolveAnswerOne(ReadOnlySpan<char> reader);
 
-    static abstract int SolveAnswerTwo(ref SpanReader reader);
+    static abstract int SolveAnswerTwo(ReadOnlySpan<char> reader);
 }

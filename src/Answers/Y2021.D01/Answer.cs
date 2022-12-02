@@ -1,17 +1,17 @@
 ﻿namespace Y2021.D01;
 
-public class Answer : IAnswer<Answer>
+public partial class Answer : IAnswer<Answer>
 {
     public static int TestAnswerOne => 7;
 
     public static int TestAnswerTwo => 5;
 
-    public static int SolveAnswerOne(ref SpanReader reader)
+    public static int SolveAnswerOne(ReadOnlySpan<char> reader)
     {
         var increase = 0;
         int? lastValue = null;
 
-        foreach (var line in reader)
+        foreach (var line in reader.EnumerateLines())
         {
             if (line.Length == 0) continue;
 
@@ -28,7 +28,7 @@ public class Answer : IAnswer<Answer>
         return increase;
     }
 
-    public static int SolveAnswerTwo(ref SpanReader reader)
+    public static int SolveAnswerTwo(ReadOnlySpan<char> reader)
     {
         int? window2 = null;
         int? window3 = null;
@@ -36,7 +36,7 @@ public class Answer : IAnswer<Answer>
         var increase = 0;
         int? lastValue = null;
 
-        foreach (var line in reader)
+        foreach (var line in reader.EnumerateLines())
         {
             if (line.Length == 0) continue;
 

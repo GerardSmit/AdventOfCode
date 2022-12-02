@@ -8,8 +8,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-        <Using Include="Core" />
-    </ItemGroup>
-
 </Project>

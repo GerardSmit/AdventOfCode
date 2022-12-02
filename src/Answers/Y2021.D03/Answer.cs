@@ -1,17 +1,17 @@
 ﻿namespace Y2021.D03;
 
-public class Answer : IAnswer<Answer>
+public partial class Answer : IAnswer<Answer>
 {
     public static int TestAnswerOne => 198;
 
     public static int TestAnswerTwo => 230;
 
-    public static int SolveAnswerOne(ref SpanReader lines)
+    public static int SolveAnswerOne(ReadOnlySpan<char> span)
     {
         Span<int> zeroBits = stackalloc int[32];
         Span<int> oneBits = stackalloc int[32];
 
-        var length = ParseBits(lines, ref oneBits, ref zeroBits);
+        var length = ParseBits(span, ref oneBits, ref zeroBits);
 
         // Convert to decimals
         var epsilonRate = 0;
@@ -35,15 +35,15 @@ public class Answer : IAnswer<Answer>
         return gammaRate * epsilonRate;
     }
 
-    public static int SolveAnswerTwo(ref SpanReader lines)
+    public static int SolveAnswerTwo(ReadOnlySpan<char> span)
     {
-        var oxygenRating = FindDecimal(ref lines, '1', '0');
-        var scrubberRating = FindDecimal(ref lines, '0', '1');
+        var oxygenRating = FindDecimal(span, '1', '0');
+        var scrubberRating = FindDecimal(span, '0', '1');
 
         return oxygenRating * scrubberRating;
     }
 
-    private static int FindDecimal(ref SpanReader lines, char trueChar, char falseChar)
+    private static int FindDecimal(ReadOnlySpan<char> lines, char trueChar, char falseChar)
     {
         var list = lines.ToList();
         var length = list[0].Length;
@@ -93,12 +93,12 @@ public class Answer : IAnswer<Answer>
         return result;
     }
 
-    private static int ParseBits(SpanReader lines, ref Span<int> oneBits, ref Span<int> zeroBits)
+    private static int ParseBits(ReadOnlySpan<char> lines, ref Span<int> oneBits, ref Span<int> zeroBits)
     {
         int? length = null;
 
         // Get all bits
-        foreach (var line in lines)
+        foreach (var line in lines.EnumerateLines())
         {
             // Find the length of the line
             length ??= line.Length;

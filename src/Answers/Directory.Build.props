@@ -10,16 +10,23 @@
 
     <ItemGroup>
         <EmbeddedResource Include="Data\*.txt" />
+        <AdditionalFiles Include="Data\*.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Core" />
     </ItemGroup>
 
     <ItemGroup>
         <!-- Condition with exists because BenchmarkDotNet makes a temporary solution and cannot find the project -->
         <ProjectReference Include="..\..\Core\Core.csproj" Condition="Exists('..\..\Core\Core.csproj')" />
+        <ProjectReference Include="..\..\SourceGenerator\SourceGenerator.csproj" Condition="Exists('..\..\SourceGenerator\SourceGenerator.csproj')" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
     <ItemGroup>
         <!-- Hacky workaround for BenchmarkDotNet, otherwise the answer cannot be found -->
         <ProjectReference Include="..\..\..\..\Y20*.csproj" />
+        <ProjectReference Include="..\..\..\..\..\SourceGenerator\SourceGenerator.csproj" Condition="Exists('..\..\..\..\..\\SourceGenerator\SourceGenerator.csproj')" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
 </Project>

@@ -60,12 +60,8 @@ public static class Runner
     {
         try
         {
-            using var stream = T.GetResourceStream(source);
-            Span<byte> byteData = stackalloc byte[1024];
-            Span<char> charData = stackalloc char[4096];
-            var reader = new SpanReader(stream, byteData, charData);
-
-            return T.SolveAnswerOne(ref reader);
+            var data = source == FileSource.Test ? T.TestData : T.InputData;
+            return T.SolveAnswerOne(data.AsSpan());
         }
         catch (NotImplementedException)
         {
@@ -82,12 +78,8 @@ public static class Runner
     {
         try
         {
-            using var stream = T.GetResourceStream(source);
-            Span<byte> byteData = stackalloc byte[1024];
-            Span<char> charData = stackalloc char[4096];
-            var reader = new SpanReader(stream, byteData, charData);
-
-            return T.SolveAnswerTwo(ref reader);
+            var data = source == FileSource.Test ? T.TestData : T.InputData;
+            return T.SolveAnswerTwo(data.AsSpan());
         }
         catch (NotImplementedException)
         {

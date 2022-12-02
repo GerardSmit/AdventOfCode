@@ -3,17 +3,17 @@ using Y2022.D02.Utils;
 
 namespace Y2022.D02;
 
-public class Answer : IAnswer<Answer>
+public partial class Answer : IAnswer<Answer>
 {
     public static int TestAnswerOne => 15;
 
     public static int TestAnswerTwo => 12;
 
-    public static int SolveAnswerOne(ref SpanReader reader)
+    public static int SolveAnswerOne(ReadOnlySpan<char> reader)
     {
         var score = 0;
 
-        foreach (var line in reader)
+        foreach (var line in reader.EnumerateLines())
         {
             if (line.Length < 3) continue;
 
@@ -26,11 +26,11 @@ public class Answer : IAnswer<Answer>
         return score;
     }
 
-    public static int SolveAnswerTwo(ref SpanReader reader)
+    public static int SolveAnswerTwo(ReadOnlySpan<char> reader)
     {
         var score = 0;
 
-        foreach (var line in reader)
+        foreach (var line in reader.EnumerateLines())
         {
             if (line.Length < 3) continue;
 

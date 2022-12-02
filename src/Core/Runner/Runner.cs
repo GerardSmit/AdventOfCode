@@ -60,7 +60,7 @@ public static class Runner
     {
         try
         {
-            var data = source == FileSource.Test ? T.TestData : T.InputData;
+            var data = (source == FileSource.Test ? T.TestData : T.InputData) ?? throw new FileNotFoundException();
             return T.SolveAnswerOne(data.AsSpan());
         }
         catch (NotImplementedException)
@@ -78,7 +78,7 @@ public static class Runner
     {
         try
         {
-            var data = source == FileSource.Test ? T.TestData : T.InputData;
+            var data = (source == FileSource.Test ? T.TestData : T.InputData) ?? throw new FileNotFoundException();
             return T.SolveAnswerTwo(data.AsSpan());
         }
         catch (NotImplementedException)

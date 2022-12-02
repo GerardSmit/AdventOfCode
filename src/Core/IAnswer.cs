@@ -30,9 +30,9 @@ public interface IAnswer<out T>
 
     static virtual Assembly GetAssembly() => typeof(T).Assembly;
 
-    static abstract string TestData { get; }
+    static virtual string? TestData => null;
 
-    static abstract string InputData { get; }
+    static virtual string? InputData => null;
 
     static abstract int TestAnswerOne { get; }
 

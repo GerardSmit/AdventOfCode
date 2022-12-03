@@ -17,7 +17,8 @@ public class Answer
 
         // 2022
         new Answer<Y2022.D01.Answer>(),
-        new Answer<Y2022.D02.Answer>()
+        new Answer<Y2022.D02.Answer>(),
+        new Answer<Y2022.D03.Answer>()
     };
 
     public static IEnumerable<object[]> GetAnswers() => All.Select(a => new object[] { a });

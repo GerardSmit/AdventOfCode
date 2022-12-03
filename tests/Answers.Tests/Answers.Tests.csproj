@@ -28,6 +28,7 @@
       <ProjectReference Include="..\..\src\Answers\Y2021.D03\Y2021.D03.csproj" />
       <ProjectReference Include="..\..\src\Answers\Y2022.D01\Y2022.D01.csproj" />
       <ProjectReference Include="..\..\src\Answers\Y2022.D02\Y2022.D02.csproj" />
+      <ProjectReference Include="..\..\src\Answers\Y2022.D03\Y2022.D03.csproj" />
     </ItemGroup>
 
 </Project>
